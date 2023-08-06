@@ -25,7 +25,7 @@ const Login = () => {
 				<FormLabel>Password</FormLabel>
 				<InputGroup size="md">
 					<Input type={showPassword ? "text" : "password"} placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)}/>
-					<InputRightElement width={12}>
+					<InputRightElement width={12} color={'grey'}>
 						<Button mr={1} size="sm" onClick={() => { setShowPassword(!showPassword); }}>
 							<img src={eyeImg} />
 						</Button>

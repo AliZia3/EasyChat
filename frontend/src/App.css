@@ -3,12 +3,12 @@
 .App {
     min-height: 100vh;
     display: flex;
-    /* background-image: url("./assets/chat_bg.jpg"); */
     background-color: #111b21;
-    /* background-position: center;
-    background-size: cover; */
     justify-content: center;
     align-items: center;
+    /* background-image: url("./assets/chat_bg.jpg");
+    background-position: center;
+    background-size: cover; */
 }
 
 ::-webkit-scrollbar {
