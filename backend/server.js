@@ -11,7 +11,7 @@ connectDB();
 const app = express();
 
 app.use(express.json()); // To accept JSON data
-// app.use("/api/user", userRoutes); // any incoming request with a URL with '/api/user' will be handled by the routes defined in userRoutes
+app.use("/api/user", userRoutes); // any incoming request with a URL with '/api/user' will be handled by the routes defined in userRoutes
 
 // app.use(notFound);
 // app.use(errorHandler);
