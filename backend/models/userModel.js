@@ -13,11 +13,12 @@ const userSchema = mongoose.Schema(
 	}
 );
 
+// Function used to compare entered password with the one in the database for the user
 userSchema.methods.matchPassword = async function (enteredPassword) {
 	return await bcrypt.compare(enteredPassword, this.password);
 };
 
-// before saving user to database, encrypt the password
+// Before saving user to database, encrypt the password
 userSchema.pre("save", async function (next) {
 	if (!this.isModified) {
 		next();
