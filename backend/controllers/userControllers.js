@@ -21,12 +21,7 @@ const registerUser = asyncHandler(async (req, res) => {
 	}
 
 	// Create new user model (queries the database and then creates a new field for the new user)
-	const user = await User.create({
-		name,
-		email,
-		password,
-		pic,
-	});
+	const user = await User.create({ name, email, password, pic });
 
 	// if user exists
 	if (user) {
