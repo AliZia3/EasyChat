@@ -2,19 +2,11 @@ const mongoose = require("mongoose");
 
 const chatSchema = mongoose.Schema(
 	{
-		// Trimming so no trailing spaces after or before
-		chatName: { type: String, trim: true },
-
+		chatName: { type: String, trim: true }, // Trimming so no trailing spaces after or before
 		isGroupChat: { type: Boolean, default: false },
-
-		// type: ID to particular user, ref: Reference to User model
-		users: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-
-		// ref: Reference to Message model
-		latestMessage: { type: mongoose.Schema.Types.ObjectId, ref: "Message" },
-
-		// ref: Reference to User model
-		groupAdmin: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+		users: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // type: ID to particular user, ref: Reference to User model
+		latestMessage: { type: mongoose.Schema.Types.ObjectId, ref: "Message" }, // ref: Reference to Message model
+		groupAdmin: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // ref: Reference to User model
 	},
 	{
 		timeStamps: true,

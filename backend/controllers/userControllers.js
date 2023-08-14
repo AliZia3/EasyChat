@@ -1,5 +1,4 @@
-// asyncHanlder automatically handles errors
-const asyncHandler = require("express-async-handler");
+const asyncHandler = require("express-async-handler"); //automatically handles errors
 const User = require("../models/userModel");
 const generateToken = require("../config/generateToken");
 
@@ -25,7 +24,7 @@ const registerUser = asyncHandler(async (req, res) => {
 	// Create new user model (queries the database and then creates a new field for the new user)
 	const user = await User.create({ name, email, password, pic });
 
-	// if user exists
+	// if user exists (user has be created above)
 	if (user) {
 		res.status(201).json({
 			_id: user._id,
