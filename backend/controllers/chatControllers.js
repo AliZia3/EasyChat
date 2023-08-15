@@ -79,7 +79,7 @@ const fetchChats = asyncHandler(async (req, res) => {
 	}
 });
 
-// Create Group Chat 
+// Create Group Chat
 const createGroupChat = asyncHandler(async (req, res) => {
 	if (!req.body.users || !req.body.name) {
 		return res.status(400).send({ message: "Please fill in all fields" });
@@ -134,11 +134,31 @@ const renameGroup = asyncHandler(async (req, res) => {
 	}
 });
 
-const removeFromGroup = asyncHandler(async (req, res) => {
-	return;
+// Add a User to Group Chat
+const addToGroup = asyncHandler(async (req, res) => {
+	const { chatId, userId } = req.body;
+
+	const added = Chat.findByIdAndUpdate(
+		chatId,
+		{
+			$push: { users: userId },
+		},
+		{
+			new: true,
+		}
+	)
+		.populate("users", "-password")
+		.populate("groupAdmin", "-password");
+
+	if (!added) {
+		res.status(404);
+		throw new Error("Chat Not Found");
+	} else {
+		res.json(added);
+	}
 });
 
-const addToGroup = asyncHandler(async (req, res) => {
+const removeFromGroup = asyncHandler(async (req, res) => {
 	return;
 });
 
@@ -147,6 +167,6 @@ module.exports = {
 	fetchChats,
 	createGroupChat,
 	renameGroup,
-	removeFromGroup,
 	addToGroup,
+	removeFromGroup,
 };
