@@ -79,6 +79,7 @@ const fetchChats = asyncHandler(async (req, res) => {
 	}
 });
 
+// Create Group Chat 
 const createGroupChat = asyncHandler(async (req, res) => {
 	if (!req.body.users || !req.body.name) {
 		return res.status(400).send({ message: "Please fill in all fields" });
@@ -113,8 +114,24 @@ const createGroupChat = asyncHandler(async (req, res) => {
 	}
 });
 
+// Rename Existing Group Chat
 const renameGroup = asyncHandler(async (req, res) => {
-	return;
+	const { chatId, chatName } = req.body;
+
+	const updatedChat = await Chat.findByIdAndUpdate(
+		chatId,
+		{ chatName: chatName },
+		{ new: true }
+	)
+		.populate("users", "-password")
+		.populate("groupAdmin", "-password");
+
+	if (!updatedChat) {
+		res.status(404);
+		throw new Error("Chat Not Found");
+	} else {
+		res.json(updatedChat);
+	}
 });
 
 const removeFromGroup = asyncHandler(async (req, res) => {
