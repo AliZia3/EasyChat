@@ -1,12 +1,15 @@
 const express = require("express");
-const { registerUser, authUser, allUsers } = require("../controllers/userControllers");
+const {
+  registerUser,
+  authUser,
+  allUsers,
+} = require("../controllers/userControllers");
 const { protect } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-// when post request is made to /api/user/, it will be handled by the controller functions
-router.post("/", registerUser);
-router.post("/login", authUser); // OR router.route("/login").post(authUser)
-router.get("/", protect, allUsers);
+router.route("/").get(protect, allUsers);
+router.route("/").post(registerUser);
+router.post("/login", authUser);
 
 module.exports = router;
