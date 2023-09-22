@@ -25,5 +25,6 @@
 ![image](https://github.com/AliZia3/EasyChat/assets/87504885/fc45f828-474c-40dd-94c9-2ccb56576d82)
 
 ## 6. Adding User to Group Chat
-![image](https://github.com/AliZia3/EasyChat/assets/87504885/97b11e41-fda8-49c6-8f16-2b3b6dada8d5)
+![image](https://github.com/AliZia3/EasyChat/assets/87504885/95040c1b-0081-4898-b48a-79a7904da2b4)
+
 
